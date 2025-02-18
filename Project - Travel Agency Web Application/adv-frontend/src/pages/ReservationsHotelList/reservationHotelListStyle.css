@@ -1,0 +1,116 @@
+/* reservationHotelListStyle.css */
+
+.reservations-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.reservations-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.no-reservations-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.no-reservations-card {
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  border: 0.3rem solid #ddd;
+  border-radius: 1rem;
+  text-align: center;
+  background-color: #fff;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.no-reservations-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.no-reservations-card h2 {
+  font-size: 1.5rem;
+  color: #555;
+  margin: 0;
+}
+
+.reservations-list {
+  width: 80%;
+  align-content: center;
+  align-items: center;
+}
+
+.reservation-card {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 0.3rem solid #4f85a0;
+  border-radius: 1rem;
+}
+
+.reservation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-card .ant-card-meta-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.reservation-card .cancel-button {
+  margin-top: 10px;
+}
+
+.reservation-card.canceled {
+  border: 4px solid red;
+  color: red;
+  box-shadow: none;
+}
+
+.reservation-card.canceled h4 {
+  text-align: center;
+  font-size: 17px;
+  margin-top: 10px;
+  color: red;
+}
+
+.reservation-card-content {
+  padding: 20px;
+}
+
+.reservation-card-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.reservation-card h2,
+.reservation-card h3,
+.reservation-card h4 {
+  margin: 0;
+}
+
+.reservation-card h2 {
+  font-size: 22px;
+  color: darkslategrey;
+  margin-bottom: 10px;
+}
+
+.reservation-card h3 {
+  font-size: 15px;
+  color: #494949;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,264 @@
+﻿@model contaminaDOS_JVW.Models.GameRoundData
+
+<div class="d-flex justify-content-end align-items-center">
+    <button type="button" id="update_view" class="btn btn-primary" onclick="location.href='@Url.Action("UpdateGame", "ContaminaDOS", new {gameId = Model.game.data.id, password = Model.password, player = Model.player, server = Model.server})'"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+</div>
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <h3 style="color: #08088A;">@Model.game.data.name</h3>
+    <br>
+    @if ((Model.result != "") && (Model.result != null))
+    {
+        switch (Model.result)
+        {
+            case "enemies":
+                <h3 class="m-1" style="color: #FF0000;">The Psychopaths Have Won</h3>
+                break;
+            case "citizens":
+                <h3 class="m-1" style="color: #04B404;">The Citizens Have Won</h3>
+                break;
+        }
+    }
+</div>
+
+<br>
+
+@if ((Model.count_rounds != 0))
+{
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <h6 class="m-1" style="color: #08088A;">Rounds:</h6>
+        <h6 class="m-1" style="color: #FFBF00;">Current</h6>
+        <h6 class="m-1" style="color: #FF0000;">Psychopaths</h6>
+        <h6 class="m-1" style="color: #04B404;">Citizens</h6>
+    </div>
+}
+
+
+<div class="d-flex flex-row justify-content-center align-items-center">
+    @if ((Model.count_rounds != 0))
+    {
+        var i = 1;
+        @foreach (var result in Model.resultList)
+        {
+            switch (result)
+            {
+                case "none":
+                    <button type="button" class="btn m-1" style="background: #FFBF00;" disabled>@i</button>
+                    break;
+                case "enemies":
+                    <button type="button" class="btn m-1" style="background: #FF0000;" disabled>@i</button>
+                    break;
+                case "citizens":
+                    <button type="button" class="btn m-1" style="background: #04B404;" disabled>@i</button>
+                    break;
+            }
+            i++;
+        }
+        <br />
+    }
+</div>
+
+<br />
+<div class="d-flex flex-row justify-content-center align-items-center">
+    <h6 class="m-1" style="color: #08088A;">Owner: </h6><h6 class="m-1" style="color: #FFBF00;">@Model.game.data.owner</h6> |
+    <h6 class="m-1" style="color: #08088A;">User: </h6><h6 class="m-1" style="color: #FFBF00;">@Model.player</h6> |
+    @if (Model.round != null)
+    {
+        <h6 class="m-1" style="color: #08088A;">Leader: </h6>
+        <h6 class="m-1" style="color: #FFBF00;">@Model.round.data.leader</h6>
+    }
+</div>
+
+<br />
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+
+    @{
+        var players = Model.game.data.players;
+        int totalPlayers = players.Count;
+        int mitad = totalPlayers / 2;
+
+        var primeraMitad = players.Take(mitad);
+        var segundaMitad = players.Skip(mitad);
+    }
+
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <!-- Recorremos la primera mitad de la lista de jugadores -->
+        @foreach (var player in primeraMitad)
+        {
+            @if (Model.game.data.enemies.Contains(player))
+            {
+                <div class="container">
+                    <div class="player-card" style="background-color: #FF0000;">
+                        <div class="box-1">
+                            <div class="img-frame">
+                                <img id="img_a" src="https://static.vecteezy.com/system/resources/previews/002/780/032/non_2x/cartoon-boss-man-greedy-illustration-free-vector.jpg" />
+                            </div>
+                            <div class="details">
+                                <span class="px-5 text-capitalize text-center">@player</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                    <div class="player-card" style="background-color: #04B404;">
+                        <div class="box-1">
+                            <div class="img-frame">
+                                <img id="img_a" src="~/images/citizen.jpg" />
+                            </div>
+                            <div class="details">
+                                <span class="px-5 text-capitalize text-center">@player</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <br>
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        @foreach (var player in segundaMitad)
+        {
+            @if (Model.game.data.enemies.Contains(player))
+            {
+                <div class="container">
+                    <div class="player-card" style="background-color: #FF0000;">
+                        <div class="box-1">
+                            <div class="img-frame">
+                                <img id="img_a" src="https://static.vecteezy.com/system/resources/previews/002/780/032/non_2x/cartoon-boss-man-greedy-illustration-free-vector.jpg" />
+                            </div>
+                            <div class="details">
+                                <span class="px-5 text-capitalize text-center">@player</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                    <div class="player-card" style="background-color: #04B404;">
+                        <div class="box-1">
+                            <div class="img-frame">
+                                <img id="img_a" src="~/images/citizen.jpg" />
+                            </div>
+                            <div class="details">
+                                <span class="px-5 text-capitalize text-center">@player</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+</div>
+
+<br />
+
+@if ((Model.game.data.owner == Model.player) && (Model.game.data.status == "lobby"))
+{
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <button class="btn btn-success" id="startGame" onclick="gameStart('@Model.game.data.id', '@Model.password', '@Model.player', '@Model.server')">Start Game</button>
+    </div>
+}
+
+
+@if (Model.round != null)
+{
+    <div class="container" id="round_container">
+
+        @if (Model.player == Model.round.data.leader && Model.round.data.status == "waiting-on-leader")
+        {
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <button id="btn_popup_pg" class="btn btn-success" onclick="showPopUpPG('@Model.game.data.players.Count()', '@Model.count_rounds')">Propose Group</button>
+            </div>
+        }
+
+        <div class="modal fade" tabindex="-1" id="popup_pg_container" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="popup_pg_title">Propose a group</h4>
+                    </div>
+                    <div class="modal-body" id="popup_pg_body">
+                        <div id="popup_pg_content">
+                            <div id="players_list">
+                                <span class="text-black">Select the players</span>
+                                <form id="checklistForm">
+                                    @foreach (var item in Model.game.data.players)
+                                    {
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="@item" id="@item">
+                                            <label class="form-check-label" for="@item">@item</label>
+                                        </div>
+                                    }
+                                    <button type="button" onclick="propose_group('@Model.game.data.id', '@Model.game.data.currentRound','@Model.password', '@Model.player', '@Model.server')" class="btn btn-primary mt-3" id="btn_propose_group">Select</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.round.data.status == "voting")
+        {
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <button id="btn_popup_pg" class="btn btn-success" onclick="showPopUpVG()">Vote Group</button>
+            </div>
+        }
+
+        <div class="modal fade" tabindex="-1" id="popup_vote_container" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="popup_vote_title">The group proposed by the leader is:</h4>
+                        <div class="d-flex justify-content-center align-items-center">
+                            @foreach (var participant in Model.round.data.group)
+                            {
+                                <div class="container">
+                                    <div class="player-card" style="background-color: #FFBF00;">
+                                        <div class="box-1">
+                                            <div class="img-frame">
+                                                <img id="img_a" src="~/images/anonimo.png" />
+                                            </div>
+                                            <div class="details">
+                                                <span class="px-5 text-capitalize text-center">@participant</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="modal-body" id="popup_vote_body">
+                        <button class="btn btn-success" type="submit" onclick="votar( true, '@Model.game.data.id', '@Model.game.data.currentRound','@Model.password', '@Model.player', '@Model.server')">Agree</button>
+                        <button class="btn btn-danger" type="submit" onclick="votar( false, '@Model.game.data.id',  '@Model.game.data.currentRound','@Model.password', '@Model.player', '@Model.server')">Not agree</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            @if (Model.round.data.status == "waiting-on-group" && Model.round.data.group.Contains(Model.player))
+            {
+                @if (Model.game.data.enemies.Contains(Model.player))
+                {
+                    <button class="btn btn-danger" id="sabotageButton" onclick="submitAction( false, '@Model.game.data.id', '@Model.game.data.currentRound', '@Model.password', '@Model.player', '@Model.server')">Sabotage</button>
+                }
+                <button class="btn btn-success" id="helpButton" onclick="submitAction( true, '@Model.game.data.id', '@Model.game.data.currentRound', '@Model.password', '@Model.player', '@Model.server')">Support</button>
+            }
+        </div>
+
+    </div>
+}
+
+@section Scripts
+    {
+    <script src="~/js/mosd.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  ### Postgres database for Authentication
+  db-hotels:
+    container_name: users_database
+    image: postgres:15.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: users_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5433:5433
+    expose:
+      - 5433
+    command: -p 5433

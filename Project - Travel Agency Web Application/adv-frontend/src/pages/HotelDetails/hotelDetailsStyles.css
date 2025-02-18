@@ -1,0 +1,82 @@
+.hotel-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.hotel-details-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.hotel-details-container p {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+.hotel-details-container .facility {
+    font-size: 1rem;
+    color: #777;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: #fff;
+}
+
+.hotel-details-container .facilities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.rooms-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.room-container {
+    width: 300px; /* Ancho de cada tarjeta de habitación */
+}
+
+.rooms-card {
+    width: 100%; /* Asegura que la tarjeta de habitación ocupe todo el contenedor */
+    border: 0.3rem solid #4f85a0;
+    border-radius: 1rem;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.rooms-card.no-rooms-card {
+    width: 300px; /* Ancho de la tarjeta para el mensaje de no hoteles */
+    text-align: center;
+    padding: 20px;
+    border-color: #ccc;
+}
+
+.rooms-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+
+.no-rooms {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.reserve {
+    padding-top: 10px;
+}

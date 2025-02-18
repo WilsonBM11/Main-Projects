@@ -1,0 +1,27 @@
+﻿<div class="d-flex flex-column justify-content-center align-items-center text-center m-3">
+    <h4>Introduce a Server </h4>
+    <form asp-controller="ContaminaDOS" asp-action="Home" method="post">
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <input name="server" class="form-control" autocomplete="off"/>
+            <button type="submit" class="btn btn-success"><i class="fa fa-solid fa-sign-in" aria-hidden="true"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="d-flex flex-column justify-content-center align-items-center text-center m-3">
+    <h4>Or Choose a Server</h4>
+    <form asp-controller="ContaminaDOS" asp-action="Home" method="post">
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <h6>Server of Andrés Meseguer - https://contaminados.meseguercr.com</h6>
+            <input type="hidden" name="server" value="https://contaminados.meseguercr.com" />
+            <button type="submit" class="btn btn-success m-1"><span class="fa-solid fa-check"></span></button>
+        </div>
+    </form>
+    <form asp-controller="ContaminaDOS" asp-action="Home" method="post">
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <h6>Server of Grupo D - https://localhost:7171</h6>
+            <input type="hidden" name="server" value="https://localhost:7171" />
+            <button type="submit" class="btn btn-success m-1"><span class="fa-solid fa-check"></span></button>
+        </div>
+    </form>
+</div>

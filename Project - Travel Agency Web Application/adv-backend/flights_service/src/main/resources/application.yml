@@ -1,0 +1,19 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://agencia_viajes:password@localhost:28017/flights_database?authSource=admin
+  activemq:
+    broker-url: tcp://localhost:61616?wireFormat.maxInactivityDurationInitalDelay=30000
+    user: admin
+    password: admin
+  application:
+    name: flights-service
+server:
+  port: ${SERVER_PORT:8082}
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: true

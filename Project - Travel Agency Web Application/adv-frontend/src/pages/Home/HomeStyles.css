@@ -1,0 +1,20 @@
+.eachSlider{
+
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: 700;
+    text-align: center;
+    border: 0.3rem solid #4f85a0;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+.cards :hover{
+    background-color: #4f85a0;;
+    color: #fff;
+}

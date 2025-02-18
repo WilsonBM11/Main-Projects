@@ -1,0 +1,11 @@
+.userReservationsContainer{
+    margin: 40px 10px;
+    padding: 20px;
+    border: 0.3rem solid #4f85a0;
+    border-radius: 1rem;
+}
+
+.eachTicketContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+}

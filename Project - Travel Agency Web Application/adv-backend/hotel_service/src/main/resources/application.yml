@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: hotel-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ms_hotels
+    username: adv_hotels
+    password: Hotels123
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org.springframework: DEBUG
+
+server:
+  port: ${SERVER_PORT:8081}
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    preferIpAddress: true

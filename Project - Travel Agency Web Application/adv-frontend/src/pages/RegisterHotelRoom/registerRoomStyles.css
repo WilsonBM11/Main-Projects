@@ -1,0 +1,38 @@
+.roomContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10rem auto;
+    text-align: center;
+    
+}
+
+.roomComponent {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.3rem solid #4f85a0;
+    border-radius: 1rem;
+}
+
+.classForm1 {
+    display: flex;
+    flex-direction: column;
+} 
+
+.classFormItem1 {
+    margin-bottom: 20px; /* Ajusta el espacio entre los elementos del formulario */
+}
+
+.facilitiesLabel {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

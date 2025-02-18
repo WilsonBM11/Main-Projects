@@ -1,0 +1,140 @@
+﻿@model contaminaDOS_JVW.Models.GamesSearch
+
+@{
+    ViewData["Title"] = "GameSearch";
+}
+<h2 style="margin-top: 50px;">Games information</h2>
+<div class="container-fluid">
+    <div class="gameInfoContainer">
+        @foreach (GamesSearch.Data game in Model.data)
+        {
+            <div id="@game.id" class="infoContainer">
+                <div class="infoContainer2">
+                    <div>
+                        Name
+                    </div>
+                    <hr />
+                    <div>
+                        @game.name
+                    </div>
+                </div>
+                <div class="infoContainer2">
+                    <div>
+                        Players
+                    </div>
+                    <hr />
+                    <div>
+                        <ul>
+                            @foreach (var player in game.players)
+                            {
+                                <li style="list-style-type: none">@player</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="infoContainer2">
+                    <div>
+                        Status
+                    </div>
+                    <hr />
+                    <div>
+                        @game.status
+                    </div>
+                </div>
+                <div class="infoContainer2">
+                    <div>
+                        Password
+                    </div>
+                    <hr />
+                    <div>
+                        @if (game.password == true)
+                        {
+                            <td>Sí</td>
+                        }
+                        else
+                        {
+                            <td>No</td>
+                        }
+                    </div>
+                </div>
+                <div class="infoContainer2">
+                    <div>
+                        Current round
+                    </div>
+                    <hr />
+                    <div>
+                        @game.currentRound
+                    </div>
+                </div>
+                <div class="infoContainer2">
+                    <div>
+                        Join
+                    </div>
+                    <hr />
+                    <div>
+                        @if (game.status == "lobby")
+                        {
+                            <button style="height:50px;width:50px;" class=" btn btn-success" id="btn_popup_jg" onclick="showJoinPopUp('@game.id', '@game.password', '@game.name')"><span id="btnIcon" class="fa-solid fa-plus"></span></button>
+                        }
+                        else
+                        {
+                            <button style="height:50px;width:50px;" class=" btn btn-danger" type="submit" id="disableBtn_@game.id" disabled"><span id="btnIcon" class="fa-solid fa-plus"></span></button>
+                            <br>
+                            <span class="alerta"><b>You can only join games in "Lobby" status</b></span>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" id="popup_jg_container" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="popup_jg_title">Join a room</h4>
+            </div>
+            <div class="modal-body" id="popup_jg_body">
+                <div id="popup_jg_content">
+                    <form asp-controller="ContaminaDOS" asp-action="JoinGame" method="post">
+                        <input id="gameId_input" type="hidden" name="gameId" placeholder="Room id" value="" />
+                        <input id="name_input" type="hidden" name="name" placeholder="Room name" value="" />
+                        <div id="password_div">
+                            <span>Type the password:</span>
+                            <br />
+                            <input id="password_input" type="password" name="password" placeholder="Room password">
+                        </div>
+                        <br />
+                        <div>
+                            <span>Type your nickname:</span>
+                            <br />
+                            <input id="player_input" type="text" name="player" placeholder="Player nickname">
+                            <input id="server_input" type="hidden" name="server" placeholder="Game server" value="@Model.server" />
+                        </div>
+                        <br />
+                        <button id="join_btn" class="btn btn-primary" style="width: 100%" type="submit">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+        function showJoinPopUp(gameId, password, name) {
+            $("#gameId_input").val(gameId);
+            $("#name_input").val(name);
+            if(password == 'True'){
+                $("#password_div").show();
+            }else{
+                $("#password_div").hide();
+            }
+            $("#popup_jg_container").modal('show');
+        }
+
+    </script>
+}

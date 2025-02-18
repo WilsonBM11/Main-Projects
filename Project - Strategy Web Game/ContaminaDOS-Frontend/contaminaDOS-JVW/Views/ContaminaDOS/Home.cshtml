@@ -1,0 +1,90 @@
+﻿@model contaminaDOS_JVW.Models.Server
+
+<h2 class="title">Choose an option</h2>
+<div class="options-container">
+
+    <div class="container-option2">
+        <card class="option-card">
+            <div class="option-name">
+                <h2 class="option-title">New room</h2>
+                <a asp-controller="ContaminaDOS" asp-action="GameCreate" asp-route-server="@Model.server"><span id="icon" class="fa-solid fa-circle-plus"></span></a>
+            </div>
+        </card>
+    </div>
+    <div class="container-option2">
+        <card class="option-card">
+            <div class="option-name">
+                <h2 class="option-title">Search room</h2>
+                <button class="btn" id="btn_popup_sg" onclick="showSearchPopUp()"><i id="icon" class="fas fa-search"></i></button>
+            </div>
+        </card>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="popup_sg_container" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="popup_sg_title">Search a Game</h4>
+            </div>
+            <div class="modal-body" id="popup_sg_body">
+                <div id="popup_sg_content" class="d-flex justify-content-center align-items-center">
+                    <form asp-controller="ContaminaDOS" asp-action="GameSearch" method="post" class="search-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nameInput" name="name" placeholder="Room name">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" id="statusInput" name="status" value="lobby" />
+                            <select class="form-select m-2" id="statusSelect" onchange="updateStatus()">
+                                <option selected hidden>Select a status</option>
+                                <option value="">All</option>
+                                <option value="lobby">Lobby</option>
+                                <option value="rounds">Rounds</option>
+                                <option value="ended">Ended</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" min="0" id="pageInput" name="page" placeholder="Page" />
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" id="limitInput" name="limit" value="50" />
+                            <select class="form-select m-2" id="limitSelect" onchange="updateLimit()">
+                                <option selected hidden>Select a limit</option>
+                                @for (int num = 0; num <= 50; num++)
+                                {
+                                    <option value="@num">@num</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="hidden" id="serverInput" name="server" value="@Model.server" placeholder="Game Server">
+                        </div>
+                        <button class="btn btn-outline-primary" type="submit" id="send">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        function showSearchPopUp() {
+            $("#popup_sg_container").modal('show');
+        }
+    </script>
+
+    <script>
+        function updateStatus() {
+            var select = document.getElementById("statusSelect");
+            var input = document.getElementById("statusInput");
+            input.value = select.value;
+        }
+        function updateLimit() {
+            var select = document.getElementById("limitSelect");
+            var input = document.getElementById("limitInput");
+            input.value = select.value;
+        }
+    </script>
+    }

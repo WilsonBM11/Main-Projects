@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo-server
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: agencia_viajes
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 28017:27017
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

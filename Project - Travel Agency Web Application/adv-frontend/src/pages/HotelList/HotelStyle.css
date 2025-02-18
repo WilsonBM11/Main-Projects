@@ -1,0 +1,53 @@
+.hotel-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* Asegura que el contenedor ocupe al menos la altura total de la vista */
+    background-color: #f0f2f5;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hotel-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    gap: 16px; /* Espacio entre tarjetas */
+}
+
+.hotel-card-container {
+    flex: 1 1 calc(33.333% - 32px); /* Tres tarjetas por fila con espacio entre ellas */
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box; /* Incluye el padding y borde en el tamaño total */
+    max-width: 300px; /* Ancho máximo de cada tarjeta */
+    min-width: 250px; /* Ancho mínimo de cada tarjeta */
+}
+
+.hotel-card {
+    width: 100%; /* Asegura que la tarjeta ocupe todo el contenedor */
+    border: 0.3rem solid #4f85a0;
+    border-radius: 1rem;
+    overflow: hidden; /* Asegura que el contenido no desborde los bordes */
+}
+
+.hotel-card.no-hotels-card {
+    width: 700px; /* Ancho de la tarjeta para el mensaje de no hoteles */
+    text-align: center;
+    padding: 20px;
+    border-color: #ccc;
+}
+
+.hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+
+.no-hotels {
+    text-align: center;
+    width: 100%;
+}

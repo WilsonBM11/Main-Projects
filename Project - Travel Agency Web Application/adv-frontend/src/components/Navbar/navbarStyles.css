@@ -1,0 +1,27 @@
+.navbar {
+    background-color: #8bc7ff;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 3%;
+    
+    
+  
+}
+.ant-menu-item-active{
+    background-color: #ccfcff !important;
+
+}
+.ant-menu-item-selected {
+    background-color: #ccfcff !important;
+}
+  
+.ant-layout-header {
+    
+    background-color: #8bc7ff;
+}
+
+
+  
+

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  ### Postgres database for Hotels
+  db-hotels:
+    container_name: db-hotels
+    image: postgres:15.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ms_hotels
+      POSTGRES_USER: adv_hotels
+      POSTGRES_PASSWORD: Hotels123
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    command: -p 5432

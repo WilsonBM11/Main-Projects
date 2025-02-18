@@ -1,0 +1,47 @@
+li{
+    list-style-type: none;
+}
+
+.searchFlightsMainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem auto;
+
+}
+
+.searchFlightsMainContainer h1{
+    display: flex;
+    justify-content: center;
+}
+
+.filterContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 100px;
+}
+
+.checkboxes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.eachCheckbox{
+    display: column;
+    margin: 0 0.5rem;
+    background-color: #E3E1D9;
+    padding: 0rem 0.7rem;
+    border-radius: 0.5rem;
+}
+
+
+.filteredResultsContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+  

@@ -1,0 +1,49 @@
+server:
+  port: 8080
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: '*'
+            allowedHeaders: '*'
+            allowedMethods: '*'
+      routes:
+        - id: authentication-service
+          uri: lb://authentication-service
+          predicates:
+            - Path=/api/public/auth/**, /api/private/auth/**
+        - id: hotel-service
+          uri: lb://hotel-service
+          predicates:
+            - Path=/api/public/hotels/**, /api/private/hotels/**
+        - id: flights-service
+          uri: lb://flights-service
+          predicates:
+            - Path=/api/public/flights/**, /api/private/flights/**
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+jwt:
+  secret: KXiUPknkoVDCHdNrrYnxmA5oQLbv+LE7eHG8vkk71fjEPq0lmlZKwBhUVLUqKSmGam8P4kWxXKTGCDRgpZ5BMA==

@@ -1,0 +1,315 @@
+body {
+    background-image: url('../images/fondo.jpg');
+    position: relative;
+}
+
+/*INDEX PAGE*/
+.options-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 700px;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 15px;
+    height: 250px;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(29%, 70%);
+}
+
+.container-option2 {
+    align-items: center;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 15px;
+    height: 200px;
+    width: 200px;
+    margin: 5px;
+}
+
+#icon {
+    font-size: 70px;
+    margin: 10px;
+    color: black;
+    background-color: transparent;
+}
+
+.option-name {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+}
+
+.option-title {
+    font-size: 17px;
+}
+
+.title {
+    position: absolute;
+    top: 60%;
+    transform: translate(157%, 70%);
+    margin-top: 75px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/*MODAL 1*/
+#openModal1 {
+    border: hidden;
+    background-color: white;
+}
+
+.formDiv {
+    height: 200px;
+}
+
+#enviar {
+    width: 70px;
+    height: 25px;
+    border: hidden;
+    border-radius: 5px;
+    background-color: lightblue;
+    color: black;
+    margin: 10px;
+}
+
+#miInput {
+    width: 300px;
+    height: 20px;
+    margin: 10px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+/*NEW ROOM PAGE*/
+
+.card-container {
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(235%, 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.room-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    justify-content: space-between;
+    padding: 10px;
+    border-style: solid;
+    border-width: 2px;
+    margin: auto;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    margin: auto;
+}
+
+.room-name {
+    padding: 7px;
+}
+
+.ex3 {
+    align-items: center;
+    padding: 7px;
+}
+
+.hide {
+    width: 100%;
+    height: 0px;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+input[type="checkbox"]:checked + .hide {
+    height: 20px;
+    opacity: 1;
+    padding: 10px;
+}
+
+.create-button {
+    margin-bottom: 20px;
+}
+
+/*USER PAGE*/
+.card1-container {
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(190%, 50%);
+}
+
+.room-card1 {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 265px;
+    justify-content: space-between;
+    padding: 10px;
+    border-style: solid;
+    border-width: 2px;
+    margin: auto;
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    margin: auto;
+}
+
+.singin-button {
+    margin: 20px;
+}
+
+.players {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    width: 105px;
+    max-width: 105px;
+    height: 100px;
+    max-height: 100px;
+    border: dotted;
+    margin: 20px; /* Espacio entre cuadrados */
+}
+
+.players-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+}
+
+/*GAME SEARCH PAGE*/
+#openModal2, #disableBtn {
+    width: 70px;
+    height: 55px;
+    border: hidden;
+    border-radius: 5px;
+    color: white;
+}
+
+#openModal2 {
+    background-color: lightgreen;
+}
+
+#disableBtn {
+    background-color: #CDA3A5;
+}
+
+#btnIcon {
+    font-size: 20px;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: row;
+    border: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 5px;
+    text-align: center;
+    height: auto;
+    margin: 35px;
+}
+
+.infoContainer2 {
+    margin: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.alerta {
+    color: #CDA3A5;
+    font-size: 12px;
+}
+
+#icon2 {
+    font-size: 25px;
+    color: white;
+}
+
+.gameInfoContainer {
+    border-width: 2px;
+    border-color: black;
+    border-radius: 15px;
+    align-content: center;
+    position: absolute;
+    margin: 30px;
+}
+
+.player-card {
+    position: relative;
+    width: 100px;
+    min-height: 100px;
+    cursor: pointer;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.player-card .img-frame {
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        transition: 0.3s;
+        overflow: hidden;
+        border: 2px solid white;
+        z-index: 2;
+        border-radius: 10px;
+}
+
+.player-card .img-frame img {
+            max-width: 100%;
+}
+
+.player-card:hover .img-frame {
+        top: 30%;
+        width: 75px;
+        height: 75px;
+        border-radius: 25%;
+}
+
+.player-card .details {
+        position: absolute;
+        width: 100%;
+        bottom: 8%;
+        z-index: 1;
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        letter-spacing: 1px;
+}
+
+    .player-card .details span {
+        color: black;
+    }
